@@ -1,0 +1,15 @@
+vn\hoapm\springboot\config\WebConfig.class
+vn\hoapm\springboot\mapper\TestJSONMapper.class
+vn\hoapm\springboot\common\APIResponse.class
+vn\hoapm\springboot\common\APIConstant.class
+vn\hoapm\springboot\rest\test\TestJSONResponse.class
+vn\hoapm\springboot\config\datetime\LocalDateSerializer.class
+vn\hoapm\springboot\config\InterceptorConfig.class
+vn\hoapm\springboot\rest\test\TestJSONRequest.class
+vn\hoapm\springboot\rest\test\TestListJSONResponse.class
+vn\hoapm\springboot\config\RESTAppConfig.class
+vn\hoapm\springboot\rest\test\TestController.class
+vn\hoapm\springboot\config\datetime\LocalDateDeserializer.class
+vn\hoapm\springboot\HoapmSpringApplication.class
+vn\hoapm\springboot\config\datetime\InstantDeserializer.class
+vn\hoapm\springboot\config\datetime\InstantSerializer.class

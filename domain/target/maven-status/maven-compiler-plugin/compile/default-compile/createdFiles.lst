@@ -1,0 +1,13 @@
+vn\hoapm\springboot\test\service\usecase\TestGetUC.class
+vn\hoapm\springboot\test\presentation\TestResponse.class
+vn\hoapm\springboot\test\service\impl\TestUpdateUCImpl.class
+vn\hoapm\springboot\shared\CommonPagingAndSort.class
+vn\hoapm\springboot\test\service\usecase\TestUpdateUC.class
+vn\hoapm\springboot\test\presentation\TestRequest.class
+vn\hoapm\springboot\test\repository\TestRepository.class
+vn\hoapm\springboot\test\service\TestService.class
+vn\hoapm\springboot\shared\AuditLog.class
+vn\hoapm\springboot\test\service\impl\TestGetUCImpl.class
+vn\hoapm\springboot\test\core\TestId.class
+vn\hoapm\springboot\test\factory\Test.class
+vn\hoapm\springboot\test\presentation\TestListResponse.class
