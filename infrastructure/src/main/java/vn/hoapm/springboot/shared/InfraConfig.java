@@ -22,7 +22,7 @@ public class InfraConfig {
 //        dataSourceBuilder.url("jdbc:mysql://localhost:3306/springboot_database");
 //        dataSourceBuilder.username("root");
 //        dataSourceBuilder.password("hoa123456");
-
+//      cho nay test git
         dataSourceBuilder.driverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         dataSourceBuilder.url("jdbc:sqlserver://DESKTOP-M8ASORT;databaseName=hoapmSpring");
         dataSourceBuilder.username("hoapm");
