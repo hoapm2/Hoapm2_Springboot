@@ -15,7 +15,6 @@ public class InterceptorConfig extends HandlerInterceptorAdapter {
         httpSession.setAttribute("lang", requestServlet.getHeader("lang"));
         httpSession.setAttribute("currentUserId", requestServlet.getHeader("currentUserId"));
         httpSession.setAttribute("acceptLanguage", requestServlet.getHeader("Accept-Language"));
-
         return true;
     }
 

@@ -1,11 +1,6 @@
-vn\hoapm\springboot\test\factory\TestDB.class
-vn\hoapm\springboot\test\sql\UpdateTest.class
-vn\hoapm\springboot\test\TestRepositoryImpl.class
 vn\hoapm\springboot\shared\InfraConfig.class
-vn\hoapm\springboot\test\sql\FindTests.class
-vn\hoapm\springboot\shared\UpdateSQLCommand.class
-vn\hoapm\springboot\test\TestJDBC.class
-vn\hoapm\springboot\shared\MappingSQLCommand.class
-vn\hoapm\springboot\test\mapper\TestDBMapper.class
-vn\hoapm\springboot\shared\InfraContext.class
-vn\hoapm\springboot\test\context\TestInfraContext.class
+vn\hoapm\springboot\user\UserRepositoryImpl.class
+vn\hoapm\springboot\user\sql\CreateAccount.class
+vn\hoapm\springboot\shared\BaseQuery.class
+vn\hoapm\springboot\user\factory\UserDB.class
+vn\hoapm\springboot\user\sql\FindUserByUsername.class

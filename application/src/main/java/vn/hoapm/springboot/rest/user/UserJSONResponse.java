@@ -1,0 +1,15 @@
+package vn.hoapm.springboot.rest.user;
+
+import lombok.Data;
+
+import java.time.Instant;
+
+@Data
+public class UserJSONResponse {
+    private Long id;
+    private String name;
+    private String username;
+    private Integer status;
+    private Instant createdAt;
+    private Instant utimestamp;
+}

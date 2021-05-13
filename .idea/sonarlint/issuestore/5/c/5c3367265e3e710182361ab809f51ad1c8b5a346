@@ -1,0 +1,8 @@
+
+v	java:S116"URename this field "JWT_SECRET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ž•ñÿûÿÿÿÿ8ÇÞ»Ü”/
+m	java:S116"QRename this field "LOGGER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘Â¯¢8ÇÞ»Ü”/
+u	java:S116"YRename this field "JWT_EXPIRATION" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ê”ÝÓ8ÇÞ»Ü”/
+C
+java:S1170"!Make this final field static too.(ž•ñÿûÿÿÿÿ8ÇÞ»Ü”/
+>
+java:S1170"!Make this final field static too.(ê”ÝÓ8ÇÞ»Ü”/

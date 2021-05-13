@@ -9,6 +9,7 @@ import java.sql.Date;
 @Data
 public class User {
     private UserId userId;
+    private String name;
     private String username;
     private String password;
     private String phone;
