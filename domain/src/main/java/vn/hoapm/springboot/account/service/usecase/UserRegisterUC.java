@@ -8,11 +8,13 @@ public interface UserRegisterUC {
 
     UserRegisterUC validate();
 
-    UserRegisterUC create();
-
     UserRegisterUC encodePassword();
 
-    UserRegisterUC check();
+    UserRegisterUC createPersonalAccount();
+
+    UserRegisterUC checkInsertSuccess();
+
+    UserRegisterUC createRoles();
 
     UserResponse end();
 }

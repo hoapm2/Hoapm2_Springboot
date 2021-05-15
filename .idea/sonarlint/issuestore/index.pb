@@ -47,8 +47,6 @@ Minfrastructure/src/main/java/vn/hoapm/springboot/user/UserRepositoryImpl.java,
 Qinfrastructure/src/main/java/vn/hoapm/springboot/user/sql/FindUserByUsername.java,7\6\764b04f45863f42f1cca6b5096c3524dba31b861
 }
 Mapplication/src/main/java/vn/hoapm/springboot/rest/mapper/UserJSONMapper.java,e\4\e4444598fe050fc1d7d3ce27525f0c07fd728a98
-q
-Adomain/src/main/java/vn/hoapm/springboot/account/core/UserId.java,5\7\579510a30e9a02c038b64fd78129d816bb500bec
 x
 Hdomain/src/main/java/vn/hoapm/springboot/shared/CommonPagingAndSort.java,3\3\33c9d3fa52cd4d6eceea8bebd4e2820235523f7e
 u

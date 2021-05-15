@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import vn.hoapm.springboot.account.core.UserId;
 import vn.hoapm.springboot.shared.AuditLog;
 
 import java.sql.Date;
@@ -29,6 +28,6 @@ public class UserResponse {
     private Integer gender;
     private Date dob;
     private String avatar;
-    private Integer role;
+    private String role;
     private AuditLog auditLog;
 }

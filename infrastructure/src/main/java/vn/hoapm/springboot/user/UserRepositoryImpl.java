@@ -2,11 +2,13 @@ package vn.hoapm.springboot.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import vn.hoapm.springboot.account.factory.User;
 import vn.hoapm.springboot.account.factory.UserCUD;
 import vn.hoapm.springboot.account.factory.UserSearch;
 import vn.hoapm.springboot.account.presentaion.UserResponse;
 import vn.hoapm.springboot.account.repository.UserRepository;
 import vn.hoapm.springboot.user.sql.CreateAccount;
+import vn.hoapm.springboot.user.sql.CreateRole;
 import vn.hoapm.springboot.user.sql.FindUserByUsername;
 
 import javax.annotation.PostConstruct;
@@ -18,6 +20,7 @@ public class UserRepositoryImpl implements UserRepository {
     private final DataSource dataSource;
     private FindUserByUsername findUserByUsername;
     private CreateAccount createAccount;
+    private CreateRole createRole;
 
     @Autowired
     public UserRepositoryImpl(DataSource dataSource) {
@@ -28,6 +31,7 @@ public class UserRepositoryImpl implements UserRepository {
     public void compileSQL() {
         findUserByUsername = new FindUserByUsername(dataSource);
         createAccount = new CreateAccount(dataSource);
+        createRole = new CreateRole(dataSource);
     }
 
     @Override
@@ -37,7 +41,12 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public int create(UserCUD userCUD) {
+    public long create(UserCUD userCUD) {
         return createAccount.execute(userCUD);
+    }
+
+    @Override
+    public int createRole(User user) {
+        return createRole.execute(user);
     }
 }

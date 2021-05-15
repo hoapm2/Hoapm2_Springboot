@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -41,7 +40,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint) {
         this.jwtAuthenticationEntryPoint = jwtAuthenticationEntryPoint;
     }
-
 
 
     @Autowired
@@ -84,19 +82,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-                httpSecurity
-                .csrf().disable()
-                .addFilterAfter(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
-                .authorizeRequests()
-                .antMatchers("/register", "/login", "/log_out").permitAll()
-                .antMatchers("/users**", "/user-groups**").hasAnyRole("ADMIN")
-                        .antMatchers(HttpMethod.POST, "/users").hasAnyRole("USER")
-                .anyRequest().authenticated()
-                .and()
-                .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
-                .and()
-                .logout()
-                .logoutUrl("/log_out")
+            httpSecurity
+                    .csrf().disable()
+                    .addFilterAfter(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
+                    .authorizeRequests()
+                    .antMatchers("/register", "/login", "/logout").permitAll()
+                    .antMatchers("/users").access("hasAnyRole('ADMIN','USER')")
+                    .antMatchers("/admin").access("hasRole('ADMIN')")
+                    //.antMatchers(HttpMethod.POST, "/users").hasAnyRole("USER")
+                    .anyRequest().authenticated()
+                    .and()
+                    .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
+                    .and()
+                    .logout()
+                    .logoutUrl("/logout")
                 .permitAll()
                 .and()
                 .sessionManagement()
@@ -109,8 +108,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // Get AuthenticationManager bean
         return super.authenticationManagerBean();
     }
-
-
 
 
 }

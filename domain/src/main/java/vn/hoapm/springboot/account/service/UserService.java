@@ -35,8 +35,9 @@ public class UserService {
                 .applyRequest(userRequest.getCud())
                 .validate()
                 .encodePassword()
-                .create()
-                .check()
+                .createPersonalAccount()
+                .createRoles()
+                .checkInsertSuccess()
                 .end();
         return userResponse;
     }

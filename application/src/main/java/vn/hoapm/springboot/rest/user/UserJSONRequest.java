@@ -16,7 +16,7 @@ public class UserJSONRequest extends PagingSortFilter {
     private String name;
     private String phone;
     private String email;
-    private Integer role;
+    private int roleId;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ",timezone = "UTC")
     private Instant utimestamp;
 }

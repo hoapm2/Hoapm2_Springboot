@@ -10,5 +10,7 @@ import vn.hoapm.springboot.account.presentaion.UserResponse;
 public interface UserRepository {
     UserResponse findBindUsername(UserSearch search);
 
-    int create(UserCUD userCUD);
+    long create(UserCUD userCUD);
+
+    int createRole(User user);
 }

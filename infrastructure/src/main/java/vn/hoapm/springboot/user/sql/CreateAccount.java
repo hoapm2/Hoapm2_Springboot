@@ -1,6 +1,5 @@
 package vn.hoapm.springboot.user.sql;
 
-import org.hibernate.annotations.SQLUpdate;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -16,18 +15,21 @@ import java.sql.Types;
 
 public class CreateAccount extends SqlUpdate implements BaseQuery {
 
-    public CreateAccount(DataSource dataSource){
+    public CreateAccount(DataSource dataSource) {
         super();
         this.setDataSource(dataSource);
         this.declareParameters();
         this.setSql(buildSQL());
+        this.setGeneratedKeysColumnNames("ID");
+        this.setReturnGeneratedKeys(true);
         this.compile();
     }
+
     @Override
     public String buildSQL() {
         StringBuilder builder = new StringBuilder();
         builder.append("INSERT INTO users (")
-                .append("  NAME, PHONE, EMAIL,USERNAME, PASSWORD ")
+                .append("  NAME, PHONE, EMAIL, USERNAME, PASSWORD ")
                 .append(" ) VALUES ( ")
                 .append("  :NAME")
                 .append(", :PHONE")
@@ -47,15 +49,16 @@ public class CreateAccount extends SqlUpdate implements BaseQuery {
     }
 
 
-
-    public int execute(Object... params) throws DataAccessException {
+    public long execute(Object... params) throws DataAccessException {
         UserCUD userCUD = (UserCUD) params[0];
         MapSqlParameterSource paramNamed = new MapSqlParameterSource();
         paramNamed.addValue(UserDB.NAME, userCUD.getName());
         paramNamed.addValue(UserDB.PHONE, userCUD.getPhone());
         paramNamed.addValue(UserDB.EMAIL, userCUD.getEmail());
         paramNamed.addValue(UserDB.USERNAME, userCUD.getUsername());
-        paramNamed.addValue(UserDB.PASSWORD,userCUD.getPassword());
-       return this.updateByNamedParam(paramNamed.getValues());
+        paramNamed.addValue(UserDB.PASSWORD, userCUD.getPassword());
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        int executedRecord = this.updateByNamedParam(paramNamed.getValues(),keyHolder);
+        return executedRecord > 0 ? keyHolder.getKey().longValue() : 0l;
     }
 }

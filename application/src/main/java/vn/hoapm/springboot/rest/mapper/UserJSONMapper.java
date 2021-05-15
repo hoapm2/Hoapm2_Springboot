@@ -28,6 +28,10 @@ public class UserJSONMapper {
         UserJSONResponse userJSONResponse = new UserJSONResponse();
         if (userResponse != null) {
             userJSONResponse.setUsername(userResponse.getUsername());
+            userJSONResponse.setName(userResponse.getName());
+            userJSONResponse.setRole(userResponse.getRole());
+            userJSONResponse.setPhone(userResponse.getName());
+            userJSONResponse.setCreatedAt(userResponse.getCreatedAt().toInstant());
         }
         return userJSONResponse;
     }
@@ -52,9 +56,10 @@ public class UserJSONMapper {
                     .id(jsonRequest.getId())
                     .username(jsonRequest.getUsername())
                     .password(jsonRequest.getPassword())
-                    .role(jsonRequest.getRole())
+                    .roleId(jsonRequest.getRoleId())
                     .email(jsonRequest.getEmail())
                     .phone(jsonRequest.getPhone())
+                    .name(jsonRequest.getName())
                     .utimestamp(jsonRequest.getUtimestamp()!=null? Timestamp.from(jsonRequest.getUtimestamp()):null)
                     .build();
             request.setCud(cud);
