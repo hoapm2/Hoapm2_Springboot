@@ -28,6 +28,7 @@ public class JwtUserDetailsService implements UserDetailsService {
             UserAuth userAuth = new UserAuth();
             userAuth.setPassword(userResponse.getPassword());
             userAuth.setUsername(userResponse.getUsername());
+            userAuth.setRole(userResponse.getRole());
             return new CustomUserDetails(userAuth);
         } else {
             throw new UsernameNotFoundException("User not found with username: " + username);

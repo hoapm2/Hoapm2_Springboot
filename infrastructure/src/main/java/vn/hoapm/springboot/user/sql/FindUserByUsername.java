@@ -51,8 +51,8 @@ public class FindUserByUsername extends MappingSqlQuery<UserResponse> implements
                 .append(" r.NAME ROLE_NAME,")
                 .append(" u.CREATED_AT ")
                 .append(" FROM users u ")
-                .append(" INNER JOIN user_roles ur on u.ID = ur.USER_ID ")
-                .append(" INNER JOIN roles r on r.ID = ur.ROLE_ID ")
+                .append(" LEFT JOIN user_roles ur on u.ID = ur.USER_ID ")
+                .append(" LEFT JOIN roles r on r.ID = ur.ROLE_ID ")
                 .append(" WHERE ")
                 .append(" u.USERNAME = :" + UserDB.USERNAME );
         return builder.toString();
