@@ -17,7 +17,7 @@ public class User {
     private int gender;
     private Date dob;
     private String avatar;
-    private int roleId;
+    private String roleCode;
     private String roleName;
     private AuditLog auditLog;
 }

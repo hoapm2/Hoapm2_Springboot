@@ -24,6 +24,8 @@ import javax.validation.Valid;
 @RestController
 public class UserController {
     private static final String USERS = "/users";
+    private static final String USER_ROLE = "USER";
+    private static final String ADMIN_ROLE = "ADMIN";
 
     private UserService userService;
 
@@ -65,12 +67,26 @@ public class UserController {
     }
 
     @PostMapping("/register")
+    // register for account with role is USER
     public ResponseEntity<?> register(@RequestBody UserJSONRequest jsonRequest ){
+        jsonRequest.setRoleCode(USER_ROLE);
         UserRequest request = UserJSONMapper.getInstance().fromJsonRequest(jsonRequest);
         UserResponse userResponse = userService.register(request);
         UserJSONResponse jsonResponse = UserJSONMapper.getInstance().fromResponse(userResponse);
         APIResponse<UserJSONResponse> apiResponse = new APIResponse<>();
         return apiResponse.sendResponse(jsonResponse, HttpStatus.OK.value(), "user.success.register");
     }
+
+    @PostMapping("/admin")
+    // register for account with role is ADMIN
+    public ResponseEntity<?> createAdminAccount(@RequestBody UserJSONRequest jsonRequest ){
+        jsonRequest.setRoleCode(ADMIN_ROLE);
+        UserRequest request = UserJSONMapper.getInstance().fromJsonRequest(jsonRequest);
+        UserResponse userResponse = userService.register(request);
+        UserJSONResponse jsonResponse = UserJSONMapper.getInstance().fromResponse(userResponse);
+        APIResponse<UserJSONResponse> apiResponse = new APIResponse<>();
+        return apiResponse.sendResponse(jsonResponse, HttpStatus.OK.value(), "user.success.register");
+    }
+
 
 }

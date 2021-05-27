@@ -54,10 +54,11 @@ public class UserRegisterUCImpl implements UserRegisterUC {
     public UserRegisterUC createRoles() {
         if (idReturn > 0){
             User user = User.builder()
-                    .roleId(userCUD.getRoleId())
-                    .id(idReturn)
-                    .build();
+                .roleCode(userCUD.getRoleCode())
+                .id(idReturn)
+                .build();
             int executedRecord = repository.createRole(user);
+
         }
         return this;
     }

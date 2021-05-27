@@ -17,7 +17,7 @@ public class UserCUD {
     private String name;
     private String username;
     private String password;
-    private int roleId;
+    private String roleCode;
     private String phone;
     private String email;
     private Timestamp utimestamp;

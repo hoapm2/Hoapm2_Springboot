@@ -56,7 +56,7 @@ public class UserJSONMapper {
                     .id(jsonRequest.getId())
                     .username(jsonRequest.getUsername())
                     .password(jsonRequest.getPassword())
-                    .roleId(jsonRequest.getRoleId())
+                    .roleCode(jsonRequest.getRoleCode())
                     .email(jsonRequest.getEmail())
                     .phone(jsonRequest.getPhone())
                     .name(jsonRequest.getName())

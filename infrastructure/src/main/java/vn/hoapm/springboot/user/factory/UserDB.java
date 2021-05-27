@@ -20,5 +20,5 @@ public class UserDB {
     public static final String CREATED_AT = "CREATED_AT";
     public static final String USER_ID = "USER_ID";
     public static final String ROLE_NAME = "ROLE_NAME";
-    public static final String ROLE_ID = "ROLE_ID";
+    public static final String ROLE_CODE = "ROLE_CODE";
 }

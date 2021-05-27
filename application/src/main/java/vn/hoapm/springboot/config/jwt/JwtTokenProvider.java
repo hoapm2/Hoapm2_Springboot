@@ -10,8 +10,8 @@ import java.util.Date;
 @Component
 public class JwtTokenProvider {
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
-    private final String JWT_SECRET = "hoapm"; // secret key
-    private final Long JWT_EXPIRATION = 86400000L;  //time to expirate jwt
+    private static final String JWT_SECRET = "hoapm"; // secret key
+    private static final Long JWT_EXPIRATION = 86400000L;  //time to expirate jwt
 
 
     //create jwt from username

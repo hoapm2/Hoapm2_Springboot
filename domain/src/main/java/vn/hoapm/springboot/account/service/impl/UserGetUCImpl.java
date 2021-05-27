@@ -1,6 +1,4 @@
 package vn.hoapm.springboot.account.service.impl;
-
-import vn.hoapm.springboot.account.factory.User;
 import vn.hoapm.springboot.account.factory.UserSearch;
 import vn.hoapm.springboot.account.presentaion.UserResponse;
 import vn.hoapm.springboot.account.repository.UserRepository;

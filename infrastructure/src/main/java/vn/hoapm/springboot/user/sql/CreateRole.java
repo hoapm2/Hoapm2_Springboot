@@ -25,17 +25,17 @@ public class CreateRole extends SqlUpdate implements BaseQuery {
     public String buildSQL() {
         StringBuilder builder = new StringBuilder();
         builder.append("INSERT INTO user_roles (")
-                .append("  USER_ID, ROLE_ID  ")
+                .append("  USER_ID, ROLE_CODE  ")
                 .append(" ) VALUES ( ")
                 .append("  :USER_ID")
-                .append(", :ROLE_ID ) ");
+                .append(", :ROLE_CODE ) ");
         return builder.toString();
     }
 
     @Override
     public void declareParameters() {
         declareParameter(new SqlParameter(UserDB.USER_ID, Types.NUMERIC));
-        declareParameter(new SqlParameter(UserDB.ROLE_ID, Types.NUMERIC));
+        declareParameter(new SqlParameter(UserDB.ROLE_CODE, Types.VARCHAR));
 
     }
 
@@ -43,7 +43,7 @@ public class CreateRole extends SqlUpdate implements BaseQuery {
         User user = (User) params[0];
         MapSqlParameterSource paramNamed = new MapSqlParameterSource();
         paramNamed.addValue(UserDB.USER_ID, user.getId());
-        paramNamed.addValue(UserDB.ROLE_ID, user.getRoleId());
+        paramNamed.addValue(UserDB.ROLE_CODE, user.getRoleCode());
         return this.updateByNamedParam(paramNamed.getValues());
     }
 }

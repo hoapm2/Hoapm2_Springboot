@@ -2,11 +2,12 @@ package vn.hoapm.springboot.rest.user;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
-import vn.hoapm.springboot.shared.CommonPagingAndSort;
+import lombok.EqualsAndHashCode;
 import vn.hoapm.springboot.shared.PagingSortFilter;
 
 import java.time.Instant;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class UserJSONRequest extends PagingSortFilter {
     private Long id;
@@ -16,7 +17,7 @@ public class UserJSONRequest extends PagingSortFilter {
     private String name;
     private String phone;
     private String email;
-    private int roleId;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ",timezone = "UTC")
+    private String roleCode;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ", timezone = "UTC")
     private Instant utimestamp;
 }

@@ -3,8 +3,8 @@ package vn.hoapm.springboot.account.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import vn.hoapm.springboot.account.presentaion.UserResponse;
 import vn.hoapm.springboot.account.presentaion.UserRequest;
+import vn.hoapm.springboot.account.presentaion.UserResponse;
 import vn.hoapm.springboot.account.repository.UserRepository;
 import vn.hoapm.springboot.account.service.impl.UserGetUCImpl;
 import vn.hoapm.springboot.account.service.impl.UserRegisterUCImpl;
@@ -22,16 +22,16 @@ public class UserService {
     @Transactional(propagation = Propagation.REQUIRED)
     public UserResponse findByUsername(UserRequest userRequest) {
         UserGetUC userGetUC = new UserGetUCImpl(userRepository);
-        UserResponse userResponse = userGetUC.applySearch(userRequest.getUserSearch())
+        return userGetUC.applySearch(userRequest.getUserSearch())
                 .findByUsername()
                 .endGetByUsername();
-        return userResponse;
+
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public UserResponse register (UserRequest userRequest){
+    public UserResponse register(UserRequest userRequest) {
         UserRegisterUC userRegisterUC = new UserRegisterUCImpl(userRepository);
-        UserResponse userResponse = userRegisterUC
+        return userRegisterUC
                 .applyRequest(userRequest.getCud())
                 .validate()
                 .encodePassword()
@@ -39,6 +39,5 @@ public class UserService {
                 .createRoles()
                 .checkInsertSuccess()
                 .end();
-        return userResponse;
     }
 }

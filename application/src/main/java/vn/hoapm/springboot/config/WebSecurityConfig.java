@@ -48,13 +48,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-//    @Autowired  --->> neu autowired theo cach nay co the dan den case configure tao bean trc khi jwt tao bean -> null 78
-//    public void setJwtUserDetailsService(
-//            @Qualifier("jwtUserDetailsService") UserDetailsService jwtUserDetailService) {
-//        this.jwtUserDetailService = jwtUserDetailService;
-//    }
-
-
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         // configure AuthenticationManager so that it knows from where to load
@@ -68,34 +61,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //Cung cáp userservice, passwordEncorder cho spring security
     }
 
-//    @Autowired
-//    public DaoAuthenticationProvider daoAuthenticationProvider() throws Exception{
-//        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-//        if (passwordEncoder == null) {
-//            // Password encoder, để Spring Security sử dụng mã hóa mật khẩu người dùng
-//            passwordEncoder = new BCryptPasswordEncoder();
-//        }
-//        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder);
-//        daoAuthenticationProvider.setUserDetailsService(jwtUserDetailService);
-//        return  daoAuthenticationProvider;
-//    }
-
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-            httpSecurity
-                    .csrf().disable()
-                    .addFilterAfter(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
-                    .authorizeRequests()
-                    .antMatchers("/register", "/login", "/logout").permitAll()
-                    //.antMatchers("/users").access("hasAnyRole('ADMIN','USER')")
-                    .antMatchers("/users/**").hasAuthority("ADMIN")
-                    //.antMatchers(HttpMethod.POST, "/users").hasAnyRole("USER")
-                    .anyRequest().authenticated()
-                    .and()
-                    .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
-                    .and()
-                    .logout()
-                    .logoutUrl("/logout")
+        httpSecurity
+                .csrf().disable()
+                .addFilterAfter(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
+                .authorizeRequests()
+                .antMatchers("/register", "/login", "/logout").permitAll()
+                //.antMatchers("/users").access("hasAnyRole('ADMIN','USER')")
+                .antMatchers("/users/**").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.POST, "/admin").hasAuthority("SUPERADMIN")
+                .anyRequest().authenticated()
+                .and()
+                .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
+                .and()
+                .logout()
+                .logoutUrl("/logout")
                 .permitAll()
                 .and()
                 .sessionManagement()
